@@ -1,3 +1,4 @@
+
 ---
 - hosts: Dockertask
   become: yes
@@ -5,8 +6,8 @@
   tasks:
   - name: starting curbiq container
     docker_container:
-      name: "{{ Task_docker_image }}"
-      image: "{{ Task_docker_image }}"
+      name: "{{ chaitanyabagalkoti/nginx_latest }}"
+      image: "{{ chaitanyabagalkoti/nginx_latest }}"
       state: started
       recreate: yes
       pull: yes
@@ -15,6 +16,4 @@
       restart_policy: unless-stopped
       ports:
          - "{{curbiq_docker_port}}:80"
-      volumes:
-         - /data/ctc_media/media:/opt/media
 
